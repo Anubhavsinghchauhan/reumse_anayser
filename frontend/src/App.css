@@ -1,0 +1,247 @@
+:root {
+  --bg: #fafbfd;
+  --card-bg: #ffffff;
+  --text: #0f1720;
+  --muted: #6b7280;
+  --accent: #ff2a95;
+  --border: #e6e6e6;
+  --shadow: 0 10px 30px rgba(16,24,40,0.06);
+  --max-width: 2000px;
+}
+ 
+* { box-sizing: border-box; }
+html,body,#root { height: 100%; }
+body {
+  margin: 0;
+  background: linear-gradient(180deg,#ffffff 0%, #f7f9fb 100%);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+  line-height: 1.45;
+}
+ 
+.site-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 84px;
+}
+ 
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: 18px 24px;
+}
+ 
+.header-left { display: flex; align-items: center; }
+.logo-wrapper { display: flex; align-items: center; gap: 12px; }
+.logo-icon { height: 48px; width: auto; }
+.logo-word { height: 34px; transform: translateY(2px); }
+ 
+.header-right { display: flex; align-items: center; }
+.ai-badge {
+  background: linear-gradient(90deg, rgba(255,42,149,0.15), rgba(176,0,147,0.12));
+  color: var(--accent);
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(176,0,147,0.08);
+  font-size: 13px;
+}
+ 
+/* Hero + Card */
+.hero-area { width: 100%; max-width: 1100px; margin: 40px auto; display: flex; flex-direction: column; align-items: center; gap: 26px; padding: 0 20px; }
+.hero-title { font-size: 40px; font-weight: 800; line-height: 1.02; margin: 0; }
+.accent { color: var(--accent); }
+.hero-sub { margin-top: 12px; color: var(--muted); font-size: 16px; }
+ 
+.analyzer-card {
+  width: 100%;
+  max-width: 900px;
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--card-bg);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+}
+ 
+.field-label { font-weight: 700; display: block; margin-bottom: 10px; color: var(--text); }
+textarea {
+  width: 100%;
+  min-height: 180px;
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #ececec;
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  resize: vertical;
+}
+textarea:focus { box-shadow: 0 8px 30px rgba(16,24,40,0.06); border-color: rgba(0,0,0,0.06); }
+ 
+.controls-row {
+  margin-top: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.resume-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.resume-link:hover {
+  text-decoration: underline;
+  color: #b00093;
+}
+
+
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+ 
+.analyze-btn {
+  margin-left: auto;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff2a95, #b00093);
+  color: white;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(176, 0, 147, 0.12);
+}
+.analyze-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+ 
+.error { margin-top: 12px; color: #cc1f1f; font-weight: 700; }
+ 
+/* Results */
+.results-section { max-width: var(--max-width); margin: 18px auto 120px; padding: 0 24px; text-align: left; }
+.results-header { display: flex; align-items: center; justify-content: space-between; }
+.results-list { margin-top: 14px; display: grid; gap: 12px; }
+.result-card {
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  background: white;
+}
+.result-title { font-weight: 800; margin-bottom: 6px; }
+.result-expl { color: var(--muted); white-space: pre-wrap; font-size: 14px; }
+.summary-box {
+  background: #fafafa;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #f1f1f1;
+  white-space: pre-wrap;
+  font-size: 14px;
+  margin-top: 8px;
+}
+ 
+/* Spinner & Animation */
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0;
+  gap: 12px;
+  color: var(--muted);
+}
+.spinner {
+  width: 46px;
+  height: 46px;
+  border: 5px solid rgba(176, 0, 147, 0.15);
+  border-top: 5px solid var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.fade-in { opacity: 0; animation: fadeIn 0.8s ease forwards; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+ 
+/* Download Bar */
+.download-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 72px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.96), rgba(250,250,251,0.96));
+  border-top: 1px solid rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 -6px 30px rgba(16,24,40,0.04);
+}
+.download-bar-inner { width: 100%; max-width: var(--max-width); display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; }
+.download-info { display: flex; flex-direction: column; gap: 4px; }
+.download-title { font-weight: 800; color: var(--text); }
+.download-sub { color: var(--muted); font-size: 13px; }
+.download-btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff2a95, #b00093);
+  color: white;
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(176, 0, 147, 0.12);
+}
+.download-btn:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+
+
+.topn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--text);
+}
+.topn input {
+  width: 60px;
+  padding: 5px;
+  font-weight: 600;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+}
+ 
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--text);
+}
+ 
+.checkbox-label input {
+  transform: scale(1.2);
+}
+ 
+@media (max-width: 520px) {
+  .hero-title { font-size: 26px; }
+  .download-info { display: none; }
+}
